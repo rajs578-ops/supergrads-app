@@ -49,15 +49,34 @@
   .grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
   @media(max-width:900px){.grid2{grid-template-columns:1fr}.side{width:64px}.logobar,.nav .t,.inst{display:none}.nav button{justify-content:center;padding:14px 0}}
   @media(max-width:560px){
-    .content{padding:12px}.top{padding:10px 12px}.top h1{font-size:16px}
-    .kpis{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-    .kpi{padding:12px}.kpi .v{font-size:20px}.kpi .l{font-size:11px}.kpi .d{font-size:10px;margin-top:4px}
-    .card{padding:13px;margin-bottom:12px}.card h3{font-size:13px;margin-bottom:9px}
-    .cal .day{min-height:52px;padding:3px}.cal .h{font-size:9px}
-    .ev{font-size:8px;padding:1px 3px}.cal .day .n{font-size:10px}
-    table{font-size:12px}th{font-size:10px}td{padding:8px 5px}
-    .tabs button{padding:6px 12px;font-size:12px}
-    .alert-row{padding:8px 0;font-size:12px}
+    .app{flex-direction:column}
+    /* sidebar -> bottom tab bar */
+    .side{width:100%;height:auto;position:fixed;bottom:0;left:0;z-index:50;
+      flex-direction:row;padding:0;order:2;box-shadow:0 -2px 12px rgba(0,0,0,.15)}
+    .logobar,.inst{display:none}
+    .nav{display:flex;width:100%;justify-content:space-around}
+    .nav button{flex-direction:column;gap:3px;font-size:20px;padding:9px 2px;border-left:none;border-top:3px solid transparent;flex:1;text-align:center;line-height:1}
+    .nav button.on{border-left:none;border-top-color:var(--marigold);background:rgba(255,255,255,.10)}
+    .nav .t{display:block !important;font-size:9.5px;line-height:1;font-weight:600}
+    .main{order:1;padding-bottom:72px}
+    .top{position:sticky;top:0;z-index:40;padding:12px 14px}
+    .top h1{font-size:16px}
+    .role{padding:2px}.role button{padding:6px 14px;font-size:12px}
+    .content{padding:12px}
+    /* flatter cards, less shadow, tighter */
+    .kpis{grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
+    .kpi{padding:11px;border-radius:10px}.kpi .v{font-size:19px}.kpi .l{font-size:10.5px;line-height:1.2}.kpi .d{font-size:9.5px;margin-top:3px}
+    .card{padding:12px;margin-bottom:11px;border-radius:10px}
+    .card h3{font-size:13px;margin-bottom:8px}
+    .grid2{gap:11px}
+    .cal .day{min-height:46px;padding:2px}.cal .h{font-size:8.5px;padding:2px 0}
+    .ev{font-size:7.5px;padding:1px 2px;margin-top:2px}.cal .day .n{font-size:9.5px}
+    table{font-size:11.5px}th{font-size:9px;padding:6px 4px}td{padding:7px 4px}
+    .tabs{gap:5px;margin-bottom:11px}.tabs button{padding:6px 11px;font-size:11.5px}
+    .alert-row{padding:7px 0;font-size:11.5px;gap:8px}
+    .bar{min-width:50px}
+    .att-btn{padding:5px 10px;font-size:11px}
+    .toast{bottom:auto;top:64px;right:12px;left:12px;max-width:none;text-align:center;font-size:12.5px}
   }
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px}
   .card h3{font-size:14px;color:var(--ink);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
@@ -151,8 +170,8 @@ const myResults=[
 ];
 
 let role="admin", page="dash";
-const adminPages=[["dash","▦","Dashboard"],["att","✓","Attendance"],["sch","🗓","Schedule"],["exam","✎","Exams & Results"],["alert","🔔","Alerts"],["stu","☰","Students"]];
-const parentPages=[["pdash","▦","My Child"],["psch","🗓","Schedule"],["patt","✓","Attendance"],["pres","✎","Results"],["palert","🔔","Notices"]];
+const adminPages=[["dash","▦","Dashboard","Aaj ka overview — attendance %, fees pending, at-risk students"],["att","✓","Attendance","Roz ki attendance mark karo — absent pe parent ko auto-alert"],["sch","🗓","Schedule","Daily, weekly, monthly classes aur test schedule"],["exam","✎","Exams & Results","Test results publish karo — parents ko scorecard push"],["alert","🔔","Alerts","Notices bhejo aur bheje gaye alerts ka history"],["stu","☰","Students","Poori student list — attendance, marks, fee status"]];
+const parentPages=[["pdash","▦","My Child","Bachche ka overview — attendance, score, fee, aaj ka status"],["psch","🗓","Schedule","Bachche ke batch ka daily, weekly, monthly schedule"],["patt","✓","Attendance","Bachche ki attendance history aur percentage"],["pres","✎","Results","Har test ka score aur class average se comparison"],["palert","🔔","Notices","Institute ki taraf se sabhi notices aur updates"]];
 const timetable=[
  {d:"Mon",rows:[["4:00–5:30 PM","Quant Aptitude","RS Sir","Room 2"],["5:45–7:15 PM","Verbal Ability (VARC)","Neha Ma'am","Room 2"]]},
  {d:"Tue",rows:[["4:00–5:30 PM","Logical Reasoning","AK Sir","Room 1"],["5:45–7:15 PM","Data Interpretation","Priya Ma'am","Room 2"]]},
@@ -216,14 +235,14 @@ function setRole(r){role=r;page=r==="admin"?"dash":"pdash";
  document.getElementById("rAdmin").classList.toggle("on",r==="admin");
  document.getElementById("rParent").classList.toggle("on",r==="parent");
  render(); if(r==="parent") toast("Parent view: Kabir Singh ke parent ka login");}
-function nav(p){page=p;render();}
+function nav(p,desc){page=p;render();if(desc)toast(desc);}
 function heat(arr){return '<div class="heat">'+arr.map(v=>`<b style="background:${v? 'var(--green)':'var(--red)'}"></b>`).join("")+"</div>";}
 function bar(v,c){return `<div class="bar"><i style="width:${v}%;background:${c}"></i></div>`;}
 
 function render(){
  const pages=role==="admin"?adminPages:parentPages;
- document.getElementById("nav").innerHTML=pages.map(([id,ic,t])=>
-  `<button class="${page===id?'on':''}" onclick="nav('${id}')">${ic} <span class="t">${t}</span></button>`).join("");
+ document.getElementById("nav").innerHTML=pages.map(([id,ic,t,desc])=>
+  `<button class="${page===id?'on':''}" onclick="nav('${id}','${(desc||'').replace(/'/g,"\\'")}')">${ic} <span class="t">${t}</span></button>`).join("");
  const titles={dash:"Dashboard",att:"Attendance — IPMAT 2027 (Today)",sch:"Schedule — IPMAT 2027",exam:"Exams & Results",alert:"Alerts & Notices",stu:"Students",
    pdash:"Kabir Singh — IPMAT 2027",psch:"Kabir's Weekly Schedule",patt:"Kabir's Attendance",pres:"Kabir's Results",palert:"Notices"};
  document.getElementById("pageTitle").textContent=titles[page];
