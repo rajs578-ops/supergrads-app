@@ -76,7 +76,8 @@
     .alert-row{padding:7px 0;font-size:11.5px;gap:8px}
     .bar{min-width:50px}
     .att-btn{padding:5px 10px;font-size:11px}
-    .toast{bottom:auto;top:64px;right:12px;left:12px;max-width:none;text-align:center;font-size:12.5px}
+    .toast{bottom:auto;top:60px;right:auto;left:50%;transform:translateX(-50%) translateY(-8px);max-width:88%;width:max-content;text-align:center;font-size:12px;padding:9px 14px}
+    .toast.show{transform:translateX(-50%) translateY(0) !important}
   }
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px}
   .card h3{font-size:14px;color:var(--ink);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
@@ -170,8 +171,8 @@ const myResults=[
 ];
 
 let role="admin", page="dash";
-const adminPages=[["dash","▦","Dashboard","Aaj ka overview — attendance %, fees pending, at-risk students"],["att","✓","Attendance","Roz ki attendance mark karo — absent pe parent ko auto-alert"],["sch","🗓","Schedule","Daily, weekly, monthly classes aur test schedule"],["exam","✎","Exams & Results","Test results publish karo — parents ko scorecard push"],["alert","🔔","Alerts","Notices bhejo aur bheje gaye alerts ka history"],["stu","☰","Students","Poori student list — attendance, marks, fee status"]];
-const parentPages=[["pdash","▦","My Child","Bachche ka overview — attendance, score, fee, aaj ka status"],["psch","🗓","Schedule","Bachche ke batch ka daily, weekly, monthly schedule"],["patt","✓","Attendance","Bachche ki attendance history aur percentage"],["pres","✎","Results","Har test ka score aur class average se comparison"],["palert","🔔","Notices","Institute ki taraf se sabhi notices aur updates"]];
+const adminPages=[["dash","▦","Dashboard","Aaj ka overview"],["att","✓","Attendance","Attendance mark karo"],["sch","🗓","Schedule","Classes & test schedule"],["exam","✎","Exams & Results","Results publish karo"],["alert","🔔","Alerts","Notices bhejo"],["stu","☰","Students","Student list & records"]];
+const parentPages=[["pdash","▦","My Child","Bachche ka overview"],["psch","🗓","Schedule","Batch ka schedule"],["patt","✓","Attendance","Attendance history"],["pres","✎","Results","Test scores"],["palert","🔔","Notices","Institute ke notices"]];
 const timetable=[
  {d:"Mon",rows:[["4:00–5:30 PM","Quant Aptitude","RS Sir","Room 2"],["5:45–7:15 PM","Verbal Ability (VARC)","Neha Ma'am","Room 2"]]},
  {d:"Tue",rows:[["4:00–5:30 PM","Logical Reasoning","AK Sir","Room 1"],["5:45–7:15 PM","Data Interpretation","Priya Ma'am","Room 2"]]},
