@@ -48,39 +48,7 @@
   .up{color:var(--green)} .down{color:var(--red)} .warn{color:var(--amber)}
   .grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
   @media(max-width:900px){.grid2{grid-template-columns:1fr}.side{width:64px}.logobar,.nav .t,.inst{display:none}.nav button{justify-content:center;padding:14px 0}}
-  @media(max-width:560px){
-    .app{flex-direction:column}
-    /* sidebar -> bottom tab bar */
-    .side{width:100%;height:auto;position:fixed;bottom:0;left:0;z-index:50;
-      flex-direction:row;padding:0;order:2;box-shadow:0 -2px 12px rgba(0,0,0,.15)}
-    .logobar,.inst{display:none}
-    .nav{display:flex;width:100%;justify-content:space-around}
-    .nav button{flex-direction:column;gap:3px;font-size:20px;padding:9px 2px;border-left:none;border-top:3px solid transparent;flex:1;text-align:center;line-height:1}
-    .nav button.on{border-left:none;border-top-color:var(--marigold);background:rgba(255,255,255,.10)}
-    .nav .t{display:block !important;font-size:9.5px;line-height:1;font-weight:600}
-    .main{order:1;padding-bottom:72px}
-    .top{position:sticky;top:0;z-index:40;padding:12px 14px}
-    .top h1{font-size:16px}
-    .role{padding:2px}.role button{padding:6px 14px;font-size:12px}
-    .content{padding:12px}
-    /* flatter cards, less shadow, tighter */
-    .kpis{grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
-    .kpi{padding:11px;border-radius:10px}.kpi .v{font-size:19px}.kpi .l{font-size:10.5px;line-height:1.2}.kpi .d{font-size:9.5px;margin-top:3px}
-    .card{padding:12px;margin-bottom:11px;border-radius:10px}
-    .card h3{font-size:13px;margin-bottom:8px}
-    .grid2{gap:11px}
-    .cal .day{min-height:46px;padding:2px}.cal .h{font-size:8.5px;padding:2px 0}
-    .ev{font-size:7.5px;padding:1px 2px;margin-top:2px}.cal .day .n{font-size:9.5px}
-    table{font-size:11.5px}th{font-size:9px;padding:6px 4px}td{padding:7px 4px}
-    .tabs{gap:5px;margin-bottom:11px}.tabs button{padding:6px 11px;font-size:11.5px}
-    .alert-row{padding:7px 0;font-size:11.5px;gap:8px}
-    .bar{min-width:50px}
-    .att-btn{padding:5px 10px;font-size:11px}
-    .toast{bottom:auto !important;top:60px !important;right:auto !important;left:50% !important;
-      transform:translateX(-50%) translateY(-8px);max-width:88% !important;width:max-content;
-      text-align:center;font-size:12px;padding:9px 14px !important}
-    .toast.show{transform:translateX(-50%) translateY(0) !important}
-  }
+
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px}
   .card h3{font-size:14px;color:var(--ink);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
   .chip{font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px}
@@ -120,6 +88,39 @@
   .ev{display:block;margin-top:3px;padding:2px 5px;border-radius:5px;font-size:10px;font-weight:600;line-height:1.25}
   .ev.mock{background:#FDF3E0;color:var(--amber)} .ev.exam{background:#FBEAEA;color:var(--red)}
   .ev.ptm{background:#E9EDF7;color:var(--ink2)} .ev.fee{background:#FBEAEA;color:var(--red)} .ev.hol{background:#E7F4EC;color:var(--green)}
+  @media(max-width:560px){
+    .app{flex-direction:column}
+    /* sidebar -> bottom tab bar */
+    .side{width:100%;height:auto;position:fixed;bottom:0;left:0;z-index:50;
+      flex-direction:row;padding:0;order:2;box-shadow:0 -2px 12px rgba(0,0,0,.15)}
+    .logobar,.inst{display:none}
+    .nav{display:flex;width:100%;justify-content:space-around}
+    .nav button{flex-direction:column;gap:3px;font-size:20px;padding:9px 2px;border-left:none;border-top:3px solid transparent;flex:1;text-align:center;line-height:1}
+    .nav button.on{border-left:none;border-top-color:var(--marigold);background:rgba(255,255,255,.10)}
+    .nav .t{display:block !important;font-size:9.5px;line-height:1;font-weight:600}
+    .main{order:1;padding-bottom:72px}
+    .top{position:sticky;top:0;z-index:40;padding:12px 14px}
+    .top h1{font-size:16px}
+    .role{padding:2px}.role button{padding:6px 14px;font-size:12px}
+    .content{padding:12px}
+    /* flatter cards, less shadow, tighter */
+    .kpis{grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
+    .kpi{padding:11px;border-radius:10px}.kpi .v{font-size:19px}.kpi .l{font-size:10.5px;line-height:1.2}.kpi .d{font-size:9.5px;margin-top:3px}
+    .card{padding:12px;margin-bottom:11px;border-radius:10px}
+    .card h3{font-size:13px;margin-bottom:8px}
+    .grid2{gap:11px}
+    .cal .day{min-height:46px;padding:2px}.cal .h{font-size:8.5px;padding:2px 0}
+    .ev{font-size:7.5px;padding:1px 2px;margin-top:2px}.cal .day .n{font-size:9.5px}
+    table{font-size:11.5px}th{font-size:9px;padding:6px 4px}td{padding:7px 4px}
+    .tabs{gap:5px;margin-bottom:11px}.tabs button{padding:6px 11px;font-size:11.5px}
+    .alert-row{padding:7px 0;font-size:11.5px;gap:8px}
+    .bar{min-width:50px}
+    .att-btn{padding:5px 10px;font-size:11px}
+    .toast{bottom:auto !important;top:60px !important;right:auto !important;left:50% !important;
+      transform:translateX(-50%) translateY(-8px);max-width:88% !important;width:max-content;
+      text-align:center;font-size:12px;padding:9px 14px !important}
+    .toast.show{transform:translateX(-50%) translateY(0) !important}
+  }
 </style>
 </head>
 <body>
@@ -226,7 +227,7 @@ function schedHtml(isParent){
  let body="";
  if(schView==="daily") body=todayHtml(isParent);
  if(schView==="weekly") body=`<div class="card"><h3>Weekly timetable${isParent?'':' — IPMAT 2027'}
-   ${isParent?'':'<button class="primary" onclick="toast(\'Schedule change published — batch ke sab parents ko notification gaya ✓\')">Publish changes</button>'}</h3>
+   ${isParent?'':'<button class="primary" onclick="toast(\'Published ✓ Parents notified\')">Publish changes</button>'}</h3>
    <table>${ttTable()}</table></div>`;
  if(schView==="monthly") body=`<div class="card"><h3>July 2026 <span class="chip a">4 mocks · 1 exam · PTM · fee due</span></h3>${calHtml()}</div>`;
  if(schView==="tests") body=testsHtml();
@@ -237,8 +238,8 @@ function toast(m){const t=document.getElementById("toast");t.textContent=m;t.cla
 function setRole(r){role=r;page=r==="admin"?"dash":"pdash";
  document.getElementById("rAdmin").classList.toggle("on",r==="admin");
  document.getElementById("rParent").classList.toggle("on",r==="parent");
- render(); if(r==="parent") toast("Parent view: Kabir Singh ke parent ka login");}
-function nav(p,desc){page=p;render();if(desc)toast(desc);}
+ render(); if(r==="parent") toast("Parent view");}
+function nav(p,desc){page=p;render();}
 function heat(arr){return '<div class="heat">'+arr.map(v=>`<b style="background:${v? 'var(--green)':'var(--red)'}"></b>`).join("")+"</div>";}
 function bar(v,c){return `<div class="bar"><i style="width:${v}%;background:${c}"></i></div>`;}
 
@@ -275,7 +276,7 @@ function render(){
  }
 
  if(page==="att"){
-  el.innerHTML=`<div class="card"><h3>Mark today's attendance <button class="primary" onclick="toast('Attendance saved — absent parents ko auto-alert chala gaya ✓')">Save & notify parents</button></h3>
+  el.innerHTML=`<div class="card"><h3>Mark today's attendance <button class="primary" onclick="toast('Saved ✓ Parents ko alert gaya')">Save & notify parents</button></h3>
   <table><tr><th>Student</th><th>Last 14 days</th><th>%</th><th>Today</th></tr>
   ${students.map(s=>`<tr><td><b>${s.n}</b></td><td>${heat(s.last)}</td><td>${s.att}%</td>
    <td><button class="att-btn ${s.last[13]?'p':''}" id="p${s.id}" onclick="mark(${s.id},1)">Present</button>
@@ -307,7 +308,7 @@ function render(){
  }
 
  if(page==="exam"){
-  el.innerHTML=`<div class="card"><h3>All exams <button class="primary" onclick="toast('New test create form — prototype demo')">+ Create test</button></h3>
+  el.innerHTML=`<div class="card"><h3>All exams <button class="primary" onclick="toast('Demo only')">+ Create test</button></h3>
   <table><tr><th>Test</th><th>Date</th><th>Max</th><th>Class avg</th><th>Topper</th><th>Status</th></tr>
   ${exams.map(e=>`<tr><td><b>${e.t}</b></td><td>${e.d}</td><td>${e.max}</td><td>${e.avg}</td><td>${e.top}</td>
    <td><span class="chip ${e.status==='Published'?'g':'a'}">${e.status}</span></td></tr>`).join("")}
@@ -323,7 +324,7 @@ function render(){
    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px">
     <select><option>All batches</option><option>IPMAT 2027</option><option>Class 9-A</option></select>
     <input type="text" placeholder="e.g. Kal Sunday extra class 10 AM" style="flex:1;min-width:200px">
-    <button class="primary" onclick="toast('Notice sent — 42 parents notified ✓')">Send</button>
+    <button class="primary" onclick="toast('Notice sent ✓ 42 parents')">Send</button>
    </div><div class="pill">Push notification + SMS fallback jinke paas app nahi hai</div></div>
   <div class="card"><h3>Alert history</h3>
    ${alerts.map(a=>`<div class="alert-row"><span class="dot" style="background:${a.c}"></span><div>${a.t}<div class="pill">${a.w}</div></div></div>`).join("")}
@@ -388,23 +389,25 @@ installBtn.style.cssText="position:fixed;bottom:20px;left:20px;background:var(--
 document.body.appendChild(installBtn);
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;installBtn.style.display="block";});
 installBtn.onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;installBtn.style.display="none";};
-window.addEventListener("appinstalled",()=>{installBtn.style.display="none";toast("SuperGrads app install ho gaya ✓ — home screen pe icon dekho");});
+window.addEventListener("appinstalled",()=>{installBtn.style.display="none";toast("Installed ✓");});
 
 if("serviceWorker" in navigator){
+  // 1) purane service workers hatao + saara cache saaf karo (taaki purana version na dikhe)
+  navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});
+  if(window.caches){caches.keys().then(ks=>ks.forEach(k=>caches.delete(k))).catch(()=>{});}
+
+  // 2) network-first SW: hamesha pehle internet se naya laao, na mile to cache
   const swCode=`
-    const C="supergrads-v1";
     self.addEventListener("install",e=>{self.skipWaiting()});
-    self.addEventListener("activate",e=>{self.clients.claim()});
+    self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
     self.addEventListener("fetch",e=>{
-      e.respondWith(caches.open(C).then(async cache=>{
-        const hit=await cache.match(e.request);
-        if(hit)return hit;
-        try{const res=await fetch(e.request);cache.put(e.request,res.clone());return res;}
-        catch(_){return hit||Response.error();}
-      }));
+      e.respondWith(
+        fetch(e.request).catch(()=>caches.match(e.request))
+      );
     });`;
   const blob=new Blob([swCode],{type:"text/javascript"});
   navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});
+});
 }
 </script>
 </body>
